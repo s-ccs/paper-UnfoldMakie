@@ -34,7 +34,7 @@ bibliography: paper.bib
 
 In an earlier study @mikheev2024art, we asked novice and expert practitioners for insights into their ERP visualization practices, and consequently used their responses to improve UnfoldMakie.jl.
 
-UnfoldMakie.jl fills the gap as one of the only dedicated EEG visualization libraries with a focus on speed, ease of use, adaptability and detailed documentation. At the same time, it still allows explorative analysis (zooming/panning) and vector graphics with publication-ready figures. This is achieved by the modularity of Makie.jl @danisch2021makie, which allows to switch backends from (W)GLMakie.jl to CairoMakie.jl.
+UnfoldMakie.jl fills the gap as one of the only dedicated EEG visualization libraries with a focus on speed, ease of use, adaptability and detailed documentation. At the same time, it still allows explorative analysis (zooming/panning) and vector graphics with publication-ready figures. This is achieved by the modularity of Makie.jl @danisch2021makie, which allows to switch between two backends: CPU-supported vector graphics CairoMakie.jl and GPU-supported interactive GLMakie.jl and WGLMakie.jl.
 
 Anyone who works with EEG, MEG, ERP, iEEG or other time-series data is a target audience of this package.
 
@@ -60,15 +60,19 @@ Also we support two Unfold-specific plots: Design matrices and Spline plots.
 
 = State of the field
 
-There are dozens of libraries for ERP visualization in Python and MATLAB. The most EEG practitioners (82%) have experience with non-visualization specific MATLAB-based tools like EEGLAB @delorme2004eeglab, FieldTrip @oostenveld2011fieldtrip, ERPLAB @lopez2014erplab and Brainstorm @tadel2019meg. The Python-based MNE (41%) and commercial software Brain Vision Analyzer (22%) also showed significant usage, as well as custom scripts written in programming languages such as R, Python, Julia (42%).
+There are dozens of libraries for ERP visualization in Python and MATLAB. The most EEG practitioners (82%) have experience with non-visualization specific MATLAB-based tools like EEGLAB @delorme2004eeglab, FieldTrip @oostenveld2011fieldtrip, ERPLAB @lopez2014erplab and Brainstorm @tadel2019meg. Also, EEGVIS @ehigner_2018eegvis could be mentioned. 
 
-Julia is faster than Python and MATLAB, however there are not many EEG/ERP visualization libraries. Currently, we could find #link("https://github.com/slopezpereyra/EEGToolkit.jl?tab=readme-ov-file")[EEGToolkit.jl], #link("https://github.com/JuliaHealth/NeuroAnalyzer.jl")[NeuroAnalyzer.jl]. However the are more focused on analysis of raw EEG data, while our package is more specialized for visualization of ERPs and rep. Also there are #link("https://julianeuro.github.io/packages")[traces] of many abandoned projects.
+The Python-based MNE @Gramfort_MEG_and_EEG_2013 (41%) and commercial software Brain Vision Analyzer (22%) also showed significant usage, as well as custom scripts written in programming languages such as R, Python, Julia (42%).
+
+There are not many EEG/ERP visualization libraries on Julia. Currently, we could find NeuroAnalyzer.jl @Wysokinski_NeuroAnalyzer, EEGToolkit.jl @Pereyra_EEGToolkit, Neuroimaging.jl @Luke_Neuroimaging.  However they are more focused on analysis of raw EEG data, while our package is more specialized for visualization of ERPs and rERPs. Also there are #link("https://julianeuro.github.io/packages")[traces] of many abandoned projects.
 
 = Funding
-Funded by the Deutschemark Gemeinschaft (DG, German Research Foundation) – Project-ID 251654672 – TER 161.
+Funded by the Deutsche Forschungsgemeinschaft (DG, German Research Foundation) – Project-ID 251654672 – TRR 161.
 
 = Acknowledgements
 
-We acknowledge contributions from Daniel Kindergartner, Niklaus Partner, Siren Dorking, Fail Furman Loman, Judith Steepers, Rene Skurries. 
+We acknowledge contributions from Daniel Baumgartner, Niklas Gärtner, Soren Doring, Fadil Furkan Lokman, Judith Schepers, René Skukies. 
 
 #bibliography("paper.bib")
+
+
