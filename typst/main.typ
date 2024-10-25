@@ -43,7 +43,7 @@ In an earlier study @mikheev2024art, we asked novice and expert practitioners fo
 
 UnfoldMakie.jl has the following benefits:
 - Fast on first run. Julia allows to plot complex figures fast. For instance, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is 18 times faster, compared to MATLAB. Although, it is slower than MNE by 1 second. #footnote[The measurements were done by using BenchmarkTools.jl. @BenchmarkTools.jl-2016 Be aware that results of benchmarking tools can vary each run and depends on a OS, package environment, etc.]
-- Fast on updating. The main advantage of Julia is the speed with which the figures are updated. UnfoldMakie.jl can update an animation with 50 timestamps 2.6 times faster than MNE.
+- Fast on updating. The main advantage of Julia is the speed with which the figures are updated. UnfoldMakie.jl can update an animation with 50 timestamps 1.7 times faster than MNE.
 - Highly adaptable. Modularity of Makie.jl allows creation of modular functions.
 - Customable. Majority of EEG researchers preferred flexibility of coding as the most important feature of the tool. That's why we allowed users to flexibly customize different aspects of the plot. 
 - Documented. Extensive documentation with many usage examples and docstrings for each important function.
@@ -83,13 +83,13 @@ UnfoldMakie.jl has the following benefits:
     [*Languages*], [*Package*], [*Median speed*]
   ),
     [Julia],
-    [UnfoldMakie],
-    [3.512 sec],
+    [UnfoldMakie (.jpg)],
+    [5.801 sec],
     [Python],
-    [MNE],
-    [9.116 s]
+    [MNE (.jpg)],
+    [9.494 sec]
 ),
-  caption: [Time benchmarking for topoplot animation with 50 timepoint in 2 different packages],
+  caption: [Time benchmarking for generation and saving of\ topoplot animation with 50 timepoint in 2 different packages],
 )
 
 We currently support nine general EEG plot types (Figure 1). 
