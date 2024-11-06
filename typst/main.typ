@@ -41,14 +41,15 @@ In an earlier study @mikheev2024art, we asked novice and expert practitioners fo
 = Functionality
 
 
-UnfoldMakie.jl has the following benefits:
+UnfoldMakie.jl has the following benefits over other ERP visualization toolboxes:
 - Fast on first run. Julia allows to plot complex figures fast. For instance, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is 18 times faster, compared to MATLAB. Although, it is slower than MNE by 1 second. #footnote[The measurements were done by using BenchmarkTools.jl. @BenchmarkTools.jl-2016 Be aware that results of benchmarking tools can vary each run and depends on a OS, package environment, etc.]
-- Fast on updating. The main advantage of Julia is the speed with which the figures are updated. UnfoldMakie.jl can update an animation with 50 timestamps 1.7 times faster than MNE.
-- Highly adaptable. Modularity of Makie.jl allows creation of modular functions.
-- Customable. Majority of EEG researchers preferred flexibility of coding as the most important feature of the tool. That's why we allowed users to flexibly customize different aspects of the plot. 
-- Documented. Extensive documentation with many usage examples and docstrings for each important function.
-- Interactive. Several plots make use of Observables.jl which allows fast updating of the underlying data. Several plots already have predefined interactive features.
-- Scientific colormaps by default. According to our earlier study @mikheev2024art, 40% of EEG researchers do not know about the issue of scientific color maps.
+- Fast updating. The main advantage of Julia is the speed with which the numbers are updated. UnfoldMakie.jl can create and save a gif file with 50 timestamps 1.7 times faster than MNE.
+- Highly customizable. Modularity of Makie.jl allows creating functions that can be combined with each other. This encourages the creation of new complex plot types. 
+- Customizable. The majority of EEG researchers preferred flexibility of coding as the most important feature of the tool. That's why we gave users the flexibility to customize different aspects of the plot. 
+- Documented. Extensive documentation with many usage examples and docstrings for each important function is very helpful for users to understand the code.
+- Interactive. Several plots in our package are interactive and use Observables.jl, which allows for fast updating of the underlying data.
+- Scientific color maps by default. According to our earlier study @mikheev2024art, 40% of EEG researchers do not know about scientific color maps. We set up scientific color maps by default.
+- Minimalist. Unlike MNE, UnfoldMakie.jl focuses exclusively on visualizing (r)ERPs, making it easier to understand and maintain.
 
 
 #figure(
@@ -83,13 +84,13 @@ UnfoldMakie.jl has the following benefits:
     [*Languages*], [*Package*], [*Median speed*]
   ),
     [Julia],
-    [UnfoldMakie (.jpg)],
+    [UnfoldMakie (.gif)],
     [5.801 sec],
     [Python],
-    [MNE (.jpg)],
+    [MNE (.gif)],
     [9.494 sec]
 ),
-  caption: [Time benchmarking for generation and saving of\ topoplot animation with 50 timepoint in 2 different packages],
+  caption: [Time benchmarking for generation and saving of\ topoplot animation  with 50 timepoint in 2 different packages],
 )
 
 We currently support nine general EEG plot types (Figure 1). 
@@ -104,7 +105,7 @@ and two Unfold-specific plots: Design matrices and Spline plots.
 
 There are dozens of libraries for ERP visualization in Python and MATLAB. Most EEG practitioners (82%) have experience with non-visualization specific MATLAB-based tools like EEGLAB @delorme2004eeglab, FieldTrip @oostenveld2011fieldtrip, ERPLAB @lopez2014erplab and Brainstorm @tadel2019meg. Also worth mentioning is EEGVIS @ehigner_2018eegvis. 
 
-The Python-based MNE @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software Brain Vision Analyzer (22%) also showed significant use, as did custom scripts written in programming languages such as R, Python, Julia (42%).
+The Python-based MNE @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software Brain Vision Analyzer (22%) also showed significant use. Custom scripts written in programming languages such as R, Python, Julia are also quite popular (42%).
 
 There are not many EEG/ERP visualization libraries on Julia. Currently, we could find NeuroAnalyzer.jl @Wysokinski_NeuroAnalyzer, EEGToolkit.jl @Pereyra_EEGToolkit, Neuroimaging.jl @Luke_Neuroimaging. However, they are more focused on the analysis of raw EEG data, while our package is more specialized on the visualization of ERPs and rERPs. There are also #link("https://julianeuro.github.io/packages")[traces] of many abandoned projects.
 
