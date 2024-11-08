@@ -1,5 +1,5 @@
 ---
-title: 'UnfoldMakie.jl: A Julia package for ERP visualization'
+title: '`UnfoldMakie.jl`: A Julia package for ERP visualization'
 
 tags:
   - Julia
@@ -30,26 +30,24 @@ bibliography: paper.bib
 
 = Statement of need
 
-`UnfoldMakie.jl` is a Julia package for visualization of electroencephalography (EEG), with a focus on event-related potentials (ERPs), especially regression-ERPs (rERPs). It can accompany Unfold.jl @ehinger2019unfold, a toolbox for regression-ERP analysis, but is also a standalone tool and independent of Unfold.jl). The package is mainly based on the following packages: Makie.jl  @danisch2021makie and AlgebraOfGraphics.jl for visualization, Unfold.jl for regressions, Topoplots.jl for interpolation of topoplots.
+`UnfoldMakie.jl` is a Julia package for visualization of electroencephalography (EEG) data, with a focus on event-related potentials (ERPs) and regression-ERPs (rERPs). `UnfoldMakie.jl` fills a gap as one of the only dedicated EEG visualization libraries and offers ease of use, customization, speed, and detailed documentation. It allows for both explorative analysis (zooming/panning) and export to publication-ready vector graphics. This is achieved via multiple backends of `Makie.jl` @danisch2021makie: vector graphics with `CairoMakie.jl`, GPU-accelerated interactive graphics with `GLMakie.jl` and the browser-based `WGLMakie,jl`. 
 
-UnfoldMakie.jl fills the gap as one of the only dedicated EEG visualization libraries with a focus on speed, ease of use, customization and detailed documentation. At the same time, it still allows explorative analysis (zooming/panning) and vector graphics with publication-ready figures. This is achieved by the modularity of Makie.jl, which allows switching between two backends: CPU-supported vector graphics CairoMakie.jl and GPU-supported interactive GLMakie.jl and WGLMakie.jl. 
+In an earlier study @mikheev2024art, we asked novice and expert practitioners for insights into their ERP visualization practices. The results of this survey were used to develop and improve `UnfoldMakie.jl`. Further, `UnfoldMakie.jl` is agnostic (independent) of any specific analysis framework, but it nicely accompanies the rERP analysis package `Unfold.jl` @ehinger2019unfold.
 
-Anyone who works with EEG, MEG, ERP, iEEG or other time-series data is a target audience of this package.
-
-In an earlier study @mikheev2024art, we asked novice and expert practitioners for insights into their ERP visualization practices. The result of this user study were used to improve UnfoldMakie.jl.
+The target audience of this package is anyone working with EEG, MEG, ERP, iEEG or other time-series data.
 
 = Functionality
-
-
-UnfoldMakie.jl has the following benefits over other ERP visualization toolboxes:
-- Fast on first run. Julia allows to plot complex figures fast. For instance, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is 18 times faster, compared to MATLAB. Although, it is slower than MNE by 1 second. #footnote[The measurements were done by using BenchmarkTools.jl. @BenchmarkTools.jl-2016 Be aware that results of benchmarking tools can vary each run and depends on a OS, package environment, etc.]
-- Fast updating. The main advantage of Julia is the speed with which the numbers are updated. UnfoldMakie.jl can create and save a gif file with 50 timestamps 1.7 times faster than MNE.
-- Highly customizable. Modularity of Makie.jl allows creating functions that can be combined with each other. This encourages the creation of new complex plot types. 
-- Customizable. The majority of EEG researchers preferred flexibility of coding as the most important feature of the tool. That's why we gave users the flexibility to customize different aspects of the plot. 
-- Documented. Extensive documentation with many usage examples and docstrings for each important function is very helpful for users to understand the code.
-- Interactive. Several plots in our package are interactive and use Observables.jl, which allows for fast updating of the underlying data.
-- Scientific color maps by default. According to our earlier study @mikheev2024art, 40% of EEG researchers do not know about scientific color maps. We set up scientific color maps by default.
-- Minimalist. Unlike MNE, UnfoldMakie.jl focuses exclusively on visualizing (r)ERPs, making it easier to understand and maintain.
+`UnfoldMakie.jl` excels in various fields:
+- Focused. `UnfoldMakie.jl` focuses exclusively on visualizing (r)ERPs, unlike other toolboxes such as `EEGLAB`, `FieldTrip`, `Brainstorm`, or `MNE`. This makes it easier to understand, use, and maintain the package in the future.
+- Customizable. The majority of EEG researchers perceive the flexibility of coding as the most important feature of the EEG toolbox @mikheev2024art. Consequently, users `UnfoldMakie.jl` have great flexibility in customizing most aspects of the plots, such as colors, line styles, and axis decorations. 
+- Combining plots. The layout system for subplots in `Makie.jl` makes it easy to combine and align various plot types.
+- Flexible mapping. With `AlgebraOfGraphics.jl`, it is easy to map conditions, groups, channels, or other features, to a large variety of aesthetics like linestyle, color, marker and others. It works similar to the popular R package `ggplot2`.
+- Flexible data input. All functions support basic `Arrays` and tidy `DataFrames`.
+- Fast. Julia and `Makie.jl` allows fast plotting of figures with very complex layout. As an example, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is ~20 times faster, compared to `EEGLAB`. Although, the Python-based `MNE` is faster by one second. #footnote[The measurements were done by using `BenchmarkTools.jl`. @BenchmarkTools.jl-2016 Be aware that results of benchmarking can vary each run and depends on a OS, package environment, other processes running on computer etc.]
+- Faster updating. `Makie.jl` is incredibly fast at updating figures, which is beneficial for developing interactive tools and creating animations. `UnfoldMakie.jl` can create and save a topoplot gif file with 50 frames in 1.7 times less time than `MNE`.
+- Interactive. Several plots in our package have interactive features. They are supported by `Observables.jl`, which allows for fast data exchange and quick plot updating.
+- Scientific color maps. According to our previous study @mikheev2024art, 40% of EEG researchers are not aware of the issue of perceptually non-uniform color maps. `UnfoldMakie.jl` uses scientific color maps throughout.
+- Documented. There is extensive documentation with many usage examples and docstrings.
 
 
 #figure(
@@ -64,15 +62,13 @@ UnfoldMakie.jl has the following benefits over other ERP visualization toolboxes
     [EEGLAB],
     [36 sec],
     [Julia],
-    [UnfoldMakie\
-    UnfoldMakie with DelaunayMesh interpolation],
-    [1.998 sec\
-    1.648 sec],
+    [UnfoldMakie],
+    [1.998 sec],
     [Python],
     [MNE],
     [0.826 sec]
 ),
-  caption: [Time benchmarking for topoplot series with 50 topolots in 3 different packages (first run)],
+  caption: [Benchmark for a topoplot series with 50 topolots],
 )
 
 #figure(
@@ -90,31 +86,36 @@ UnfoldMakie.jl has the following benefits over other ERP visualization toolboxes
     [MNE (.gif)],
     [9.494 sec]
 ),
-  caption: [Time benchmarking for generation and saving of\ topoplot animation  with 50 timepoint in 2 different packages],
+  caption: [Benchmark for generating (and saving) of a topoplot animation  with 50 timepoints. No similar functionality exists in `EEGLAB`],
 )
 
-We currently support nine general EEG plot types (Figure 1). 
+We currently support nine general EEG plot types (Figure 1) 
 and two Unfold-specific plots: Design matrices and Spline plots.
 
 #figure(
   image("complex_plot.png", width: 80%),
-  caption: [8 plots generated by UnfoldMakie.jl. A) ERP plot, B) Butterfly plot, C) Topoplot, D) Topoplot timeseries, E) ERP image @jung1998analyzing, G) Channel image, H) Parallel coordinate plot @ten2006design.],
+  caption: [8 plots generated by `UnfoldMakie.jl`. A) ERP plot, B) Butterfly plot, C) Topoplot, D) Topoplot timeseries, E) ERP image @jung1998analyzing, G) Channel image, H) Parallel coordinate plot @ten2006design.],
 ) <glacier>
 
 = State of the field
 
-There are dozens of libraries for ERP visualization in Python and MATLAB. Most EEG practitioners (82%) have experience with non-visualization specific MATLAB-based tools like EEGLAB @delorme2004eeglab, FieldTrip @oostenveld2011fieldtrip, ERPLAB @lopez2014erplab and Brainstorm @tadel2019meg. Also worth mentioning is EEGVIS @ehigner_2018eegvis. 
+There are dozens of libraries for ERP analysis including visualization in Python and MATLAB. According to a recent survey @mikheev2024art, most EEG practitioners (82%) have experience with MATLAB-based tools like `EEGLAB` @delorme2004eeglab, `FieldTrip` @oostenveld2011fieldtrip, `ERPLAB` @lopez2014erplab and Brainstorm @tadel2019meg. The Python-based `MNE` @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software `Brain Vision Analyzer` (22%) further showed strong popularity. None of these toolboxes particularly focuses on visualizations. Indeed in terms of specialized EEG visualization toolboxes, we are aware of only two such libraries, both MATLAB-based and both named `eegvis` @robbins2012eegvis and @ehigner_2018eegvis. Few EEG/ERP analysis and/or visualization libraries were written in Julia. We are aware of `NeuroAnalyzer.jl` @Wysokinski_NeuroAnalyzer, `EEGToolkit.jl` @Pereyra_EEGToolkit, `Neuroimaging.jl` @Luke_Neuroimaging. There are also #link("https://julianeuro.github.io/packages")[traces] of several abandoned projects. Worth highlighting is `PyMNE.jl`, a wrapper of the Python-MNE toolbox. 
 
-The Python-based MNE @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software Brain Vision Analyzer (22%) also showed significant use. Custom scripts written in programming languages such as R, Python, Julia are also quite popular (42%).
+However, all these packages are focused on the analysis of EEG data, while our package is specialized on the visualization of ERPs and rERPs. This is the gap that `UnfoldMakie.jl` fills.
 
-There are not many EEG/ERP visualization libraries on Julia. Currently, we could find NeuroAnalyzer.jl @Wysokinski_NeuroAnalyzer, EEGToolkit.jl @Pereyra_EEGToolkit, Neuroimaging.jl @Luke_Neuroimaging. However, they are more focused on the analysis of raw EEG data, while our package is more specialized on the visualization of ERPs and rERPs. There are also #link("https://julianeuro.github.io/packages")[traces] of many abandoned projects.
+
 
 = Funding
-Funded by the Deutsche Forschungsgemeinschaft (DG, German Research Foundation) – Project-ID 251654672 – TRR 161.
+Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – Project-ID 251654672 – TRR 161 and in the Emmy Noether Programme - Project-ID 538578433.
 
 = Acknowledgements
 
-We acknowledge contributions from Daniel Baumgartner, Niklas Gärtner, Soren Doring, Fadil Furkan Lokman, Judith Schepers, René Skukies. 
+We acknowledge contributions from Daniel Baumgartner, Niklas Gärtner, Soren Doring, Fadil Furkan Lokman, Judith Schepers, and René Skukies. 
+
+= Toolbox dependencies
+`Makie.jl`
+`AlgebraOfGraphics.jl`
+`TopoPlots.jl`
 
 #bibliography("paper.bib")
 
