@@ -48,7 +48,7 @@ The target audience of this package is anyone working with EEG, MEG, ERP, iEEG o
 
 - Flexible data input. All functions support basic `Arrays` and tidy `DataFrames`.
 
-- Fast. Julia and `Makie.jl` allows fast plotting of figures with very complex layout. As an example, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is ~20 times faster, compared to `EEGLAB`. Although, the Python-based `MNE` is faster by one second. #footnote[The measurements were done by using `BenchmarkTools.jl`. @BenchmarkTools_jl_2016 Be aware that results of benchmarking can vary each run and depends on a OS, package environment, other processes running on computer etc.]
+- Fast. Julia and `Makie.jl` allows fast plotting of figures with very complex layout. As an example, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is ~20 times faster, compared to `EEGLAB`. Although, the Python-based `MNE` is faster by one second. #footnote[Be aware that results of benchmarking can vary each run and depends on a OS, package environment, other processes running on computer etc. Current measurements were done by using `BenchmarkTools.jl`. @BenchmarkTools_jl_2016]
 
 - Faster updating. `Makie.jl` is incredibly fast at updating figures, which is beneficial for developing interactive tools and creating animations. `UnfoldMakie.jl` can create and save a topoplot gif file with 50 frames in 1.7 times less time than `MNE`.
 
