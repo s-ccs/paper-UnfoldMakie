@@ -43,7 +43,7 @@ The target audience of this package is anyone working with EEG, MEG, ERP, iEEG o
 - Combining plots. The layout system for subplots in `Makie.jl` makes it easy to combine and align various plot types.
 - Flexible mapping. With `AlgebraOfGraphics.jl`, it is easy to map conditions, groups, channels, or other features, to a large variety of aesthetics like linestyle, color, marker and others. It works similar to the popular R package `ggplot2`.
 - Flexible data input. All functions support basic `Arrays` and tidy `DataFrames`.
-- Fast. Julia and `Makie.jl` allows fast plotting of figures with very complex layout. As an example, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is ~20 times faster, compared to `EEGLAB`. Although, the Python-based `MNE` is faster by one second. #footnote[The measurements were done by using `BenchmarkTools.jl`. @BenchmarkTools.jl-2016 Be aware that results of benchmarking can vary each run and depends on a OS, package environment, other processes running on computer etc.]
+- Fast. Julia and `Makie.jl` allows fast plotting of figures with very complex layout. As an example, it is able to plot one figure with 50 topoplots in 1.9 seconds (1.6 sec with DelaunayMesh interpolation), which is ~20 times faster, compared to `EEGLAB`. Although, the Python-based `MNE` is faster by one second. #footnote[The measurements were done by using `BenchmarkTools.jl`. @BenchmarkTools_jl_2016 Be aware that results of benchmarking can vary each run and depends on a OS, package environment, other processes running on computer etc.]
 - Faster updating. `Makie.jl` is incredibly fast at updating figures, which is beneficial for developing interactive tools and creating animations. `UnfoldMakie.jl` can create and save a topoplot gif file with 50 frames in 1.7 times less time than `MNE`.
 - Interactive. Several plots in our package have interactive features. They are supported by `Observables.jl`, which allows for fast data exchange and quick plot updating.
 - Scientific color maps. According to our previous study @mikheev2024art, 40% of EEG researchers are not aware of the issue of perceptually non-uniform color maps. `UnfoldMakie.jl` uses scientific color maps throughout @crameri2020misuse @moreland2015we.
@@ -99,13 +99,11 @@ and two Unfold-specific plots: Design matrices and Spline plots.
 
 = State of the field
 
-There are dozens of libraries in Python and MATLAB for ERP analysis and visualization. According to a recent survey @mikheev2024art, most EEG practitioners (82%) have experience with MATLAB-based tools like `EEGLAB` @delorme2004eeglab, `FieldTrip` @oostenveld2011fieldtrip, `ERPLAB` @lopez2014erplab and Brainstorm @tadel2019meg. The Python-based `MNE` @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software `Brain Vision Analyzer` (22%) further showed strong popularity. None of these toolboxes focuses particularly on visualizations. Indeed in terms of specialized EEG visualization toolboxes, we are aware of only two such libraries, both MATLAB-based and both named `eegvis` @robbins2012eegvis and @ehigner_2018eegvis. 
+There are dozens of libraries in Python and MATLAB for ERP analysis and visualization. According to a recent survey @mikheev2024art, most EEG practitioners (82%) have experience with MATLAB-based tools like `EEGLAB` @delorme2004eeglab, `FieldTrip` @oostenveld2011fieldtrip, `ERPLAB` @lopez2014erplab and Brainstorm @tadel2019meg. The Python-based `MNE` @Gramfort_MEG_and_EEG_2013 (41%) and the commercial software `Brain Vision Analyzer` (22%) further showed strong popularity. None of these toolboxes focuses particularly on visualizations. Indeed, in terms of specialized EEG visualization toolboxes, we are aware of only two such libraries, both MATLAB-based and both named `eegvis` @robbins2012eegvis and @ehigner_2018eegvis. 
 
-Few EEG/ERP analysis and/or visualization libraries have been written in Julia. We are aware of `NeuroAnalyzer.jl` @Wysokinski_NeuroAnalyzer, `EEGToolkit.jl` @Pereyra_EEGToolkit, `Neuroimaging.jl` @Luke_Neuroimaging. There are also #link("https://julianeuro.github.io/packages")[traces] of several abandoned projects. Worth highlighting is `PyMNE.jl`, a wrapper for the Python-MNE toolbox. 
+Few EEG/ERP analysis and/or visualization libraries have been written in Julia. We are aware of `NeuroAnalyzer.jl` @Wysokinski_NeuroAnalyzer, `EEGToolkit.jl` @Pereyra_EEGToolkit, `Neuroimaging.jl` @Luke_Neuroimaging. There are also #link("https://julianeuro.github.io/packages")[traces] of several abandoned projects. Worth highlighting is `PyMNE.jl`, a wrapper for the Python-MNE toolbox. @pymne_jl
 
 However, all these packages are focused on the analysis of EEG data, while our package is specialized on the visualization of ERPs and rERPs. This is the gap that `UnfoldMakie.jl` fills.
-
-
 
 = Funding
 Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – Project-ID 251654672 – TRR 161 and in the Emmy Noether Programme - Project-ID 538578433.
@@ -117,7 +115,7 @@ We acknowledge contributions from Daniel Baumgartner, Niklas Gärtner, Soren Dor
 = Toolbox dependencies
 `Makie.jl` @danisch2021makie, 
 `AlgebraOfGraphics.jl` @Krumbiegel_AlgebraOfGraphics, 
-`TopoPlots.jl`
+`TopoPlots.jl` @topoplots_jl.
 
 #bibliography("paper.bib")
 
